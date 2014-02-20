@@ -1,4 +1,12 @@
+body{
+	background: url(bg.jpg) no-repeat center center fixed;;
+	height:  100%;
+  	max-width: 100%;
+  	background-size: cover;
+}
+
 .header{
+	background: rgba(255,250,205, 0.6);
 	border-bottom: black;
 	border-bottom-width:0.3em;
 	border-bottom-color:black;
@@ -8,8 +16,9 @@
 
 .startDiv{
 	padding-top: 15em;
+
 }
 .welcomeDiv{
-	background-color: red;
-	background-opacity: 50;
+	background: rgba(245, 245, 245, 0.6);
+	padding-bottom: 1em;
 }
