@@ -22,3 +22,6 @@ body{
 	background: rgba(245, 245, 245, 0.6);
 	padding-bottom: 1em;
 }
+a:hover{
+	display:hidden;
+}
