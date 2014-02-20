@@ -1,0 +1,15 @@
+.header{
+	border-bottom: black;
+	border-bottom-width:0.3em;
+	border-bottom-color:black;
+	border-bottom-style: solid;
+	padding-left: 5em;
+}
+
+.startDiv{
+	padding-top: 15em;
+}
+.welcomeDiv{
+	background-color: red;
+	background-opacity: 50;
+}
