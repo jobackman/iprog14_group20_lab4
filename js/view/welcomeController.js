@@ -6,13 +6,13 @@ var welcomeController = function(view, model ) {
 		$(".startDiv").fadeOut(400, function() { 
 			$('.startDiv').remove(); 
 
-			//TODO: Måste kunna ladda in nya javascript, denna vill ej funka. 
-			//$.getScript('js/view/SecondActivity.js', function() {
-  			//	console.debug('SecondActivity loaded.');
-			//});
 
-
-			var second = new SecondActivity($(".container"), model);
+			$("body").css("background", "transparent");
+			var row = $("<div>"); row.addClass("row"); row.attr("id", "secondDiv");
+			$('#container').append(row);
+			
+			var leftMenu = new leftMenuView(row, model);
+			var selectDish = new selectDishView(row, model);
 		});
 		 
 	});

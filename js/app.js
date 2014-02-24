@@ -8,6 +8,6 @@ $(function() {
 	//And create the needed controllers and views
 		//var exampleView = new ExampleView($("#exampleView"),model);
    		//var exampleViewController = new ExampleViewController(exampleView,model);
-   	var welcome = new welcomeView($(".container"), model);
+   	var welcome = new welcomeView($("#container"), model);
    	var welcomeControl = new welcomeController(welcome, model);
 });
