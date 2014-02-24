@@ -22,6 +22,7 @@ body{
 
 #row1{
 	height: 25em;
+
 }
 
 .header{
@@ -140,4 +141,13 @@ body{
 
 #overViewDishes{
 	padding:2em;
+}
+
+#lastPage{
+	background: white;
+	height: 200%;
+}
+
+#lastPageImage{
+	padding-top: 1.8em;
 }
