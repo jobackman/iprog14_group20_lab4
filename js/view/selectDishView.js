@@ -11,11 +11,17 @@ var selectDishView = function (row,model) {
 		selectDish.html('<h3>Select Dish</h3>');
 	
 
-
+		
+		//row.html(model.getAllDishes());
 		row.append(selectDish);
 
-
+		
 
 	//Register an observer to the model
 	model.addObserver(this);
+	
+	//This function gets called when there is a change at the model
+	this.update = function(arg){
+		console.log("TEST "+this.numberOfGuests.html(model.getNumberOfGuests()));
+	}
 }

@@ -12,7 +12,9 @@ var welcomeController = function(view, model ) {
 			$('#container').append(row);
 			
 			var leftMenu = new leftMenuView(row, model);
+			var leftControl = new leftMenuController(leftMenu, model);
 			var selectDish = new selectDishView(row, model);
+			
 		});
 		 
 	});

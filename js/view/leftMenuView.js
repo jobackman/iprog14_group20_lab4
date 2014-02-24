@@ -2,9 +2,7 @@
 var leftMenuView = function (row,model) {
 	
 	
-//Creating the components dynamically. Here we create the following HTML content:
-
-	
+//Creating the components dynamically. Here we create the following HTML content:	
 
 	//div we just store in temporary variable because we won't need it later
 	var leftMenu = $("<div>");
@@ -19,7 +17,7 @@ var leftMenuView = function (row,model) {
 		people.html('People'); 
 		leftMenu.append(people);
 	var form = $("<form>"); 
-		form.html('<input type="number" value="0" min="0">'); 
+		form.html('<input type="number" id="numberOfGuests" value="0" min="0">'); 
 		leftMenu.append(form);
 	var hr = $("<hr>"); hr.addClass("divider"); 
 		leftMenu.append(hr);
@@ -27,7 +25,12 @@ var leftMenuView = function (row,model) {
 		dishtable.addClass("table"); 
 		var table = $("<table>"); 
 			table.addClass("table");
-			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr><td><strong>Total: </strong></td><td>00.00 kr</td></tr>');
+			/*
+table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr><td><strong>Total: </strong></td><td>00.00 kr</td></tr>');
+		leftMenu.append(table);
+*/
+		table.attr("id", "updateNumberofGuests");
+		table.html(model.getNumberOfGuests());	
 		leftMenu.append(table);
 
 	leftMenu.append(hr);	//En till divider, använd förra igen
@@ -38,11 +41,21 @@ var leftMenuView = function (row,model) {
 		button.html("Confirm Dinner");
 		leftMenu.append(button);
 
+	
+	
+
 
 
 	row.append(leftMenu);
 
+	this.numberOfGuests = row.find("#numberOfGuests");
+	this.updateNumberofGuests = row.find("#updateNumberofGuests");
 
 	//Register an observer to the model
 	model.addObserver(this);
+	
+		//This function gets called when there is a change at the model
+	this.update = function(arg){
+		this.updateNumberofGuests.html(model.getNumberOfGuests());
+	}
 }
