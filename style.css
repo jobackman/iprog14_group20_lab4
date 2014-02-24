@@ -16,6 +16,13 @@ body{
 	height: 100%;
 }
 
+#row100{
+	height: 100%;
+}
+
+#row1{
+	height: 25em;
+}
 
 .header{
 	background: rgba(255,250,205, 0.6);
@@ -27,6 +34,11 @@ body{
 
 .startDiv{
 	padding-top: 15em;
+
+}
+
+.price{
+	color: red;
 
 }
 .welcomeDiv{
@@ -66,6 +78,11 @@ body{
 	height: 100%;
 }
 
+#dish{
+	background: white;
+	height: 100%;
+}
+
 #ingredients{
 	background: rgb(255,250,205);
 	border-left-width: 0.3em;
@@ -81,6 +98,40 @@ body{
 	border-bottom-width: 0.3em;
 	border-bottom-color: black;
 	border-bottom-style: solid;
+}
+
+#overViewDishes{
+	background: white;
+	height: 100%;
+
+}
+
+#printButton{
+	background: white;
+	border-top-width: 0.1em;
+	border-top-color: black;
+	border-top-style: solid;
+	padding: 0.4em;
+	height: 100%;
+
+}
+
+#totalPrice{
+	background: white;
+	border-left-width: 0.1em;
+	border-left-color: black;
+	border-left-style: solid;
+	padding: 0.4em;
+	height: 100%;
+	position: relative;
+
+}
+
+#totalPriceContent{
+	position: absolute;
+	bottom: 0;
+	padding: 0.4em;
+
 }
 
 #overviewBtn{
