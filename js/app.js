@@ -10,4 +10,11 @@ $(function() {
    		//var exampleViewController = new ExampleViewController(exampleView,model);
    	var welcome = new welcomeView($("#container"), model);
    	var welcomeControl = new welcomeController(welcome, model);
+   	
+/*
+   	ska förmodligen laddas när vi byter view, alltså när vi klickar på "Create new Dinner"
+   	var leftMenu = new leftMenuView($("#leftMenu"), model);
+   	var leftControl = new leftMenuController(leftMenu, model);
+*/
+
 });

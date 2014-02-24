@@ -29,6 +29,7 @@ var welcomeView = function (container,model) {
 	container.append(parent);
 	this.startButton = container.find("#startButton");
 
+	
 
 	//Register an observer to the model
 	model.addObserver(this);
