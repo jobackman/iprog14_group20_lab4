@@ -17,12 +17,11 @@ var welcomeController = function(view, model ) {
 			
 			
 			var selectDish = new selectDishView(row, model);
-<<<<<<< HEAD
-			var selectDishControl = new selectDishController(selectDish, model);
-=======
+			
+			//var selectDishControl = new selectDishController(selectDish, model);
+
 			var selectDishC = new selectDishController(selectDish, model);
 			
->>>>>>> 79e97db0c062d0a66acfb4ffe3ff133cca76195c
 		});
 		 
 	});
