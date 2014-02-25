@@ -16,7 +16,7 @@ var welcomeController = function(view, model ) {
 			var leftControl = new leftMenuController(leftMenu, model);
 			
 			
-			//var selectDish = new selectDishView(row, model);
+			var selectDish = new selectDishView(row, model);
 			
 		});
 		 
