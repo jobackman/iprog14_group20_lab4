@@ -22,7 +22,7 @@ var selectDishView = function (row,model) {
 			selectDish.append(md5);
 		var md5select = $("<div>");
 			md5select.addClass("col-md-5");
-			md5select.html('<select id="selectedDish"><option value="starter">Starters</option><option value="maincourse">Main Courses</option><option value="dessert">Desserts</option></select>');
+			md5select.html('<select id="selectList"><option value="dessert">Desserts</option><option value="starter">Starters</option><option value="maincourse">Main Courses</option></select>');
 			selectDish.append(md5select);
 
 		row.append(selectDish);
@@ -38,35 +38,52 @@ var selectDishView = function (row,model) {
 	//get the elements 
 	this.dishes = row.find("#dishes");
 	
-	this.selectedDish = row.find("selectedDish");	//försök att hämta vald rätt, hårdkodas för tillfället nedan  model.getAllDishes("starter").length
 
+
+	//försök att ta ut vald dish från option value
+	//med nuvarande tar den ut den översta option value, måste koppla till kontrollern
+	//satte dessert överst för att testa, byt tillbaka sen
+	this.select = document.getElementById('selectList');
+	this.selectedDish =	this.select.options[this.select.selectedIndex].value;
+
+
+	var spanTest = $("<span>");
+		spanTest.attr("id", "SPANTEST");
+		//spanTest.append(this.selectedDish);
+		row.append(spanTest);
+	this.spantest = row.find("#SPANTEST");
+	this.spantest.html(this.selectedDish);
+		
+	//lista för att hämta ut dishes av vald typ
+	var list = model.getAllDishes(this.selectedDish);	//går att ändra till main dish eller dessert	
 	
-	for(i=0; i<=model.getAllDishes("starter").length; i++){
+	for(i=0; i<=list.length; i++){
 		//this.dishes.html(model.getAllDishes("starter")[i].name);
 		
 		var md2 = $("<div>");
 				md2.addClass("col-md-2");
-				var thumbnail = $("<div>");
+				var thumbnail = $('<div>');
+					//thumbnail.attr("id", model.getAllDishes("starter")[i].id);
 					thumbnail.addClass("thumbnail");
-					thumbnail.html('<a href="#"><img src="images/'+model.getAllDishes("starter")[i].image+'"></a><strong>'+model.getAllDishes("starter")[i].name+'</strong><p>"'+model.getAllDishes("starter")[i].description+'</p>');
+					thumbnail.html('<a href="#"><img src="images/'+list[i].image+'"></a><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
 					md2.append(thumbnail);
 				md10row.append(md2);
-			md10.append(md10row);
-
+			md10.append(md10row);		
 	}
 	row.append(md10);
 
 		
 		//row.html(model.getAllDishes());
 
-
-	this.thumbnail = row.find(".thumbnail");
-
+	//this.thumbnail = row.find("#2");
+	
+	
 	//Register an observer to the model
 	model.addObserver(this);
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
 		//console.log("TEST "+this.numberOfGuests.html(model.getNumberOfGuests()));
+		this.spantest.html(model.getAllDishes(this.selectedDish));
 	}
 }
