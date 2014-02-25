@@ -32,6 +32,6 @@ var welcomeView = function (container,model) {
 	
 
 	//Register an observer to the model
-	model.addObserver(this);
+	//model.addObserver(this);
 }
  

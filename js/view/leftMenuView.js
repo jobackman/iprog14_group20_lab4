@@ -25,7 +25,7 @@ var leftMenuView = function(row,model) {
 		dishtable.addClass("table"); 
 		var table = $("<table>"); 
 			table.addClass("table");
-			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr><td><strong>Total: </strong></td><td>00.00 kr</td></tr>');
+			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr><td><strong>Total: </strong></td><td id="totalMenuPrice">00.00 kr</td></tr>');
 		leftMenu.append(table);		
 
 	leftMenu.append(hr);	//En till divider, använd förra igen
@@ -53,16 +53,19 @@ var leftMenuView = function(row,model) {
 
 	this.spanNumberofGuests = row.find("#updateNumberofGuests");
 	this.inputNumberOfGuests = row.find("#inputNumberOfGuests");
+	this.totalMenuPrice = row.find("#totalMenuPrice");
 	
 	
 	//Set the inital values of the components
 	this.spanNumberofGuests.html(model.getNumberOfGuests());
+	this.totalMenuPrice.html(model.getTotalMenuPrice());
 
 	//Register an observer to the model
 	model.addObserver(this);
 	
 		//This function gets called when there is a change at the model
 	this.update = function(arg){
-		this.spanNumberofGuests.html("<br/>Guests:  " + model.getNumberOfGuests());
+		this.spanNumberofGuests.html(model.getNumberOfGuests()); 
+		this.totalMenuPrice.html(model.getTotalMenuPrice());
 	}
 }
