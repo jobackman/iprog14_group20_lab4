@@ -52,7 +52,17 @@ var selectDishView = function (row,model) {
 					md2.append(thumbnail);
 				md10row.append(md2);
 			md10.append(md10row);
+<<<<<<< HEAD
 	}
+=======
+	row.append(md10);
+
+		
+		//row.html(model.getAllDishes());
+
+
+	this.thumbnail = row.find(".thumbnail");
+>>>>>>> 79e97db0c062d0a66acfb4ffe3ff133cca76195c
 
 	//Register an observer to the model
 	model.addObserver(this);
