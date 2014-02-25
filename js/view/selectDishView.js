@@ -22,7 +22,7 @@ var selectDishView = function (row,model) {
 			selectDish.append(md5);
 		var md5select = $("<div>");
 			md5select.addClass("col-md-5");
-			md5select.html('<select><option value="starter">Starters</option><option value="maincourse">Main Courses</option><option value="dessert">Desserts</option></select>');
+			md5select.html('<select id="selectedDish"><option value="starter">Starters</option><option value="maincourse">Main Courses</option><option value="dessert">Desserts</option></select>');
 			selectDish.append(md5select);
 
 		row.append(selectDish);
@@ -32,22 +32,27 @@ var selectDishView = function (row,model) {
 		md10.attr("id", "dishes");
 		var md10row = $("<div>");
 		md10row.addClass("row");
-			var md2 = $("<div>");
-				md2.addClass("col-md-2");
-				var thumbnail = $("<div>");
-					thumbnail.addClass("thumbnail");
-					//TODO: Thumbnail ska loadas dynamiskt!!!
-					thumbnail.html('<a href="#"><img src="images/icecream.jpg"></a><h3>Ice cream</h3><p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, </p>');
-					md2.append(thumbnail);
-				md10row.append(md2);
-			md10.append(md10row);
 	row.append(md10);
 
 		
-		//row.html(model.getAllDishes());
+	//get the elements 
+	this.dishes = row.find("#dishes");
+	
+	this.selectedDish = row.find("selectedDish");	//försök att hämta vald rätt, hårdkodas för tillfället nedan  model.getAllDishes("starter").length
 
-
+	
+	for(i=0; i<=model.getAllDishes("starter").length; i++){
+		//this.dishes.html(model.getAllDishes("starter")[i].name);
 		
+		var md2 = $("<div>");
+				md2.addClass("col-md-2");
+				var thumbnail = $("<div>");
+					thumbnail.addClass("thumbnail");
+					thumbnail.html('<a href="#"><img src="images/'+model.getAllDishes("starter")[i].image+'"></a><strong>'+model.getAllDishes("starter")[i].name+'</strong><p>"'+model.getAllDishes("starter")[i].description+'</p>');
+					md2.append(thumbnail);
+				md10row.append(md2);
+			md10.append(md10row);
+	}
 
 	//Register an observer to the model
 	model.addObserver(this);

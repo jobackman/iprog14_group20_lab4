@@ -32,9 +32,11 @@ var leftMenuView = function(row,model) {
 	
 	
 	//Test span to try to send the update of number of guests
+/*
 	var spanTest = $("<span>");
 		spanTest.attr("id", "updateNumberofGuests");
 		leftMenu.append(spanTest);
+*/
 		
 		
 

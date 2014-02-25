@@ -17,7 +17,7 @@ var welcomeController = function(view, model ) {
 			
 			
 			var selectDish = new selectDishView(row, model);
-			
+			var selectDishControl = new selectDishController(selectDish, model);
 		});
 		 
 	});

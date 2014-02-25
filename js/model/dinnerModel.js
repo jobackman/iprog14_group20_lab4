@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	var numberOfGuests=0; //set default number of guests
 	menu['starter'] = 1; //set a starter to the menu, to use for testing, starter=1 -> French toast
 
-
+	
 	this.setNumberOfGuests = function(num) {
 		if(num>=0) {
 			numberOfGuests = num;
