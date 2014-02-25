@@ -17,6 +17,7 @@ var welcomeController = function(view, model ) {
 			
 			
 			var selectDish = new selectDishView(row, model);
+			var selectDishC = new selectDishController(selectDish, model);
 			
 		});
 		 

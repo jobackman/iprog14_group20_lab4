@@ -47,7 +47,7 @@ var selectDishView = function (row,model) {
 		//row.html(model.getAllDishes());
 
 
-		
+	this.thumbnail = row.find(".thumbnail");
 
 	//Register an observer to the model
 	model.addObserver(this);
