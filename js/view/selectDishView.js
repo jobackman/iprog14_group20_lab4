@@ -57,23 +57,25 @@ var selectDishView = function (row,model) {
 	//lista för att hämta ut dishes av vald typ
 	var list = model.getAllDishes(this.selectedDish);	//går att ändra till main dish eller dessert	
 	
-	for(i=0; i<list.length; i++){
-		//this.dishes.html(model.getAllDishes("starter")[i].name);
-		
+	this.thumbnailList = [];
+	
+	for(i=0; i<list.length; i++){		
 		var md2 = $("<div>");
 				md2.addClass("col-md-2");
 				var thumbnail = $('<div>');
-					thumbnail.attr("id", "m"+list[i].id);
+					thumbnail.attr("id", +list[i].id);
 					thumbnail.addClass("thumbnail");
 					thumbnail.html('<a href="#"><img src="images/'+list[i].image+'"></a><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
 					md2.append(thumbnail);
 				md10row.append(md2);
 			md10.append(md10row);		
+			
+			this.thumbnail = row.find("#"+list[i].id);
+			this.thumbnailList.push(this.thumbnail);
 	}
 	row.append(md10);
-
-		
-	this.thumbnail = row.find("#m2");
+	//alert("lista: " +thumbnailList[0]);
+	
 	
 	//Register an observer to the model
 	model.addObserver(this);
