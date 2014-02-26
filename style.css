@@ -149,6 +149,15 @@ body{
 	height: 200%;
 }
 
+.thumbnail{
+	cursor:pointer;
+}
 #lastPageImage{
 	padding-top: 1.8em;
+}
+
+#pending {
+	padding:1em;
+	border: 0.1em;
+	background-color:#F0F0EB;
 }

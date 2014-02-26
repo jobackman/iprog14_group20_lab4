@@ -25,7 +25,7 @@ var leftMenuView = function(row,model) {
 		dishtable.addClass("table"); 
 		var table = $("<table>"); 
 			table.addClass("table");
-			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr><td><strong>Total: </strong></td><td id="totalMenuPrice">00.00 kr</td></tr>');
+			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr id="pending"></tr><tr><td><strong>Total:</strong></td><td id="totalMenuPrice">'+model.getTotalMenuPrice()+' kr</td></tr>');
 		leftMenu.append(table);		
 
 	leftMenu.append(hr);	//En till divider, använd förra igen
