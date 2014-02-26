@@ -28,11 +28,24 @@ var overviewController = function(view, model ) {
 					var selectDishC = new selectDishController(selectDish, model);
 		});  
 	});
-	
-/*
-	view.select.click(function(){
-		//går det att göra så här?
-		this.selectedDish = model.getAllDishes(view.selectedDish);
+
+	view.printButton.click(function(){
+		$("#overview").fadeOut(400, function() { 
+			$('#overview').remove(); 
+					
+		});
+
+		$("#row1").fadeOut(400, function() { 
+			$('#row1').remove(); 
+			
+			
+		});
+			$("#row100").fadeOut(400, function() { 
+				$('#row100').remove(); 
+
+					var lastP = new lastPage($("#container"), model);
+					var lastPageC = new lastPageController(lastP, model);
+		});  
 	});
-*/
+
 }
