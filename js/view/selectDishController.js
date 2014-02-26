@@ -1,9 +1,8 @@
 //ExampleViewController Object constructor
 var selectDishController = function(view, model) {
-	alert("Inne i kontrollern:");
+	//alert("listlängd i controllern: "+view.thumbnailList.length);
 	for (i=0; i<view.thumbnailList.length; i++){
 		view.thumbnailList[i].click(function(){		
-			alert("thumbnail klickad");
 			$("#selectDishView").fadeOut(400, function() { 
 				$('#selectDishView').remove(); 
 						
@@ -18,10 +17,8 @@ var selectDishController = function(view, model) {
 		});
 	}
 	
-/*
-	view.select.click(function(){
-		//går det att göra så här?
-		this.selectedDish = model.getAllDishes(view.selectedDish);
+	view.selectTest.change(function(){		
+		model.setSelectedDishType(view.selectedDishType);
+		//alert("vald typ: "+view.selectedDishType);
 	});
-*/
 }

@@ -3,6 +3,7 @@ var DinnerModel = function() {
  
 	var menu = [];
 	var numberOfGuests=0; //set default number of guests
+	var selectedDishType="starter";
 	menu['starter'] = 1; //set a starter to the menu, to use for testing, starter=1 -> French toast
 
 	
@@ -15,6 +16,15 @@ var DinnerModel = function() {
 
 	this.getNumberOfGuests = function() {
 		return parseInt(numberOfGuests);
+	}
+	
+	this.setSelectedDishType = function(type) {
+		selectedDishType = type;
+		notifyObservers();
+	}
+
+	this.getSelectedDishType = function() {
+		return selectedDishType;
 	}
 
 	//Returns the dish that is on the menu for selected type 
@@ -70,6 +80,7 @@ var DinnerModel = function() {
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
 	  return $(dishes).filter(function(index,dish) {
+
 		var found = true;
 		if(filter){
 			found = false;
@@ -82,9 +93,12 @@ var DinnerModel = function() {
 			{
 				found = true;
 			}
+			
 		}
 	  	return dish.type == type && found;
-	  });	
+	  	//notifyObservers();
+	  });
+	  //notifyObservers();
 	}
 
 	//function that returns a dish of specific ID
