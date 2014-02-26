@@ -60,7 +60,7 @@ var selectDishView = function (row,model) {
 		
 	//lista för att hämta ut dishes av vald typ
 		//går att ändra till main dish eller dessert	
-	//this.thumbnailList = [];
+	this.thumbnailList = [];
 	
 	
 	function updateDishes(test){
@@ -72,7 +72,7 @@ var selectDishView = function (row,model) {
 					var thumbnail = $('<div>');
 						thumbnail.attr("id", +list[i].id);
 						thumbnail.addClass("thumbnail");
-						thumbnail.html('<a href="#"><img src="images/'+list[i].image+'"></a><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
+						thumbnail.html('<img src="images/'+list[i].image+'"><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
 						md2.append(thumbnail);
 					md10row.append(md2);
 				md10.append(md10row);		
@@ -95,8 +95,10 @@ var selectDishView = function (row,model) {
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
+	
+	
 		$("#dishRow").empty();
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
-		this.thumbnailList=updateDishes(this.selectedDishType);
+		updateDishes(this.selectedDishType);
 	}
 }
