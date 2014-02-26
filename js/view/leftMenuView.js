@@ -43,7 +43,8 @@ var leftMenuView = function(row,model) {
 	
 	var button = $("<button>"); 
 		button.addClass("btn btn-default");
-		button.attr('type', 'submit'); 
+		button.attr('type', 'submit');
+		button.attr("id", "confirmDinnerButton");
 		button.html("Confirm Dinner");
 		leftMenu.append(button);
 
@@ -56,6 +57,8 @@ var leftMenuView = function(row,model) {
 	this.spanNumberofGuests = row.find("#updateNumberofGuests");
 	this.inputNumberOfGuests = row.find("#inputNumberOfGuests");
 	this.totalMenuPrice = row.find("#totalMenuPrice");
+
+	this.confirmDinnerButton = row.find("#confirmDinnerButton");
 	
 	
 	//Set the inital values of the components
