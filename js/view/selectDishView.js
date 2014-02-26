@@ -60,7 +60,7 @@ var selectDishView = function (row,model) {
 		
 	//lista för att hämta ut dishes av vald typ
 		//går att ändra till main dish eller dessert	
-	this.thumbnailList = [];
+	//this.thumbnailList = [];
 	
 	
 	function updateDishes(test){
@@ -95,10 +95,8 @@ var selectDishView = function (row,model) {
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
-	
-	
 		$("#dishRow").empty();
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
-		updateDishes(this.selectedDishType);
+		this.thumbnailList=updateDishes(this.selectedDishType);
 	}
 }
