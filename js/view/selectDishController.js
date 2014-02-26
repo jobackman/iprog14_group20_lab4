@@ -2,7 +2,7 @@
 var selectDishController = function(view, model ) {
 	
 	view.thumbnail.click(function(){
-		
+		alert("thumbnail klickad");
 		$("#selectDishView").fadeOut(400, function() { 
 			$('#selectDishView').remove(); 
 					
@@ -16,8 +16,10 @@ var selectDishController = function(view, model ) {
 		}); 
 	});
 	
+/*
 	view.select.click(function(){
 		//går det att göra så här?
 		this.selectedDish = model.getAllDishes(view.selectedDish);
 	});
+*/
 }

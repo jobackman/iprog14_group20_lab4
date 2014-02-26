@@ -22,7 +22,7 @@ var selectDishView = function (row,model) {
 			selectDish.append(md5);
 		var md5select = $("<div>");
 			md5select.addClass("col-md-5");
-			md5select.html('<select id="selectList"><option value="dessert">Desserts</option><option value="starter">Starters</option><option value="maincourse">Main Courses</option></select>');
+			md5select.html('<select id="selectList"><option value="starter">Starters</option><option value="maincourse">Main Courses</option><option value="dessert">Desserts</option></select>');
 			selectDish.append(md5select);
 
 		row.append(selectDish);
@@ -57,13 +57,13 @@ var selectDishView = function (row,model) {
 	//lista för att hämta ut dishes av vald typ
 	var list = model.getAllDishes(this.selectedDish);	//går att ändra till main dish eller dessert	
 	
-	for(i=0; i<=list.length; i++){
+	for(i=0; i<list.length; i++){
 		//this.dishes.html(model.getAllDishes("starter")[i].name);
 		
 		var md2 = $("<div>");
 				md2.addClass("col-md-2");
 				var thumbnail = $('<div>');
-					//thumbnail.attr("id", model.getAllDishes("starter")[i].id);
+					thumbnail.attr("id", "m"+list[i].id);
 					thumbnail.addClass("thumbnail");
 					thumbnail.html('<a href="#"><img src="images/'+list[i].image+'"></a><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
 					md2.append(thumbnail);
@@ -73,10 +73,7 @@ var selectDishView = function (row,model) {
 	row.append(md10);
 
 		
-		//row.html(model.getAllDishes());
-
-	//this.thumbnail = row.find("#2");
-	
+	this.thumbnail = row.find("#m2");
 	
 	//Register an observer to the model
 	model.addObserver(this);
