@@ -1,8 +1,12 @@
 var ThumbnailController = function(view, model, dish ) {
 
 	view.click(function(){
+<<<<<<< HEAD
 		//alert("är inne i ThumbnailController, dishen är: "+ dish.name);	
 		model.setSelectedDishType("starter");
+=======
+		//alert("skriver ut id för elementet som är först i listan: "+ dish.name);	
+>>>>>>> 366840e69a7e4f234b476194914bcad9b7f767da
 		$("#selectDishView").fadeOut(400, function() { 
 			$('#selectDishView').remove(); 	
 			// if ($("#selectDishView").length==0){
@@ -32,7 +36,7 @@ var ThumbnailController = function(view, model, dish ) {
 
 			}
 			//Pending priset i LEFT MENU, Priset ska hämtas från Vald dish, INTE TotalMenuPrice
-			$("#pending").html('<td>Pending:</td><td>'+model.getTotalMenuPrice()+'</td>');
+			
 			var chosenDish = new chosenDishView($("#secondDiv"), model,dish);
 			var chosenDishC = new chosenDishController(chosenDish, model, dish);
 			//chosenDish.update();
