@@ -152,6 +152,9 @@ body{
 .thumbnail{
 	cursor:pointer;
 }
+.thumbnail:hover{
+	background-color:#F0F0EB;
+}
 #lastPageImage{
 	padding-top: 1.8em;
 }
