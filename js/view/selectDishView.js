@@ -17,7 +17,7 @@ var selectDishView = function (row,model) {
 		var md5 = $("<div>");
 			md5.addClass("col-md-5");
 			var form = $("<form>");
-				form.html('<input type="search" name="search"><input type="submit" value="Search">');
+				form.html('<input type="search" id="searchText"><input type="submit" value="Search" id="searchButton">');
 				md5.append(form);
 			selectDish.append(md5);
 		var md5select = $("<div>");
@@ -39,27 +39,13 @@ var selectDishView = function (row,model) {
 		
 	//get the elements 
 	this.dishes = row.find("#dishes");
-	
+	this.selectList = row.find("#selectList");
+	//this.searchText = document.getElementById("searchText");
+	this.searchText = row.find("#searchText");
+	this.searchButton = row.find("#searchButton");
 
 
-	//försök att ta ut vald dish från option value
-	//med nuvarande tar den ut den översta option value, måste koppla till kontrollern
-	//satte dessert överst för att testa, byt tillbaka sen
-
-	
-	this.selectTest = row.find("#selectList");
-	//alert(this.selectedDishType);
-/*
-	var spanTest = $("<span>");
-		spanTest.attr("id", "SPANTEST");
-		//spanTest.append(this.selectedDish);
-		row.append(spanTest);
-	this.spantest = row.find("#SPANTEST");
-	this.spantest.html(this.selectedDishType);
-*/
-		
-	//lista för att hämta ut dishes av vald typ
-		//går att ändra till main dish eller dessert	
+	//list to be able to set onclick's on the dishes in the controller	
 	this.thumbnailList = [];
 	
 	
@@ -85,18 +71,20 @@ var selectDishView = function (row,model) {
 	}
 
 		
+	
 	this.thumbnailList=updateDishes(model.getSelectedDishType());
 	
+	//get the selected dishtype from the scroll list
 	this.select = document.getElementById('selectList');
 	this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
+	
 	
 	//Register an observer to the model
 	model.addObserver(this);
 	
+	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
-	
-	
 		$("#dishRow").empty();
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 		updateDishes(this.selectedDishType);

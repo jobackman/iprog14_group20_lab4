@@ -4,7 +4,7 @@ var selectDishController = function(view, model) {
 	setThumbnailListener();
 	//alert("första setThumbnailListener");
 	
-	view.selectTest.change(function(){		
+	view.selectList.change(function(){		
 		model.setSelectedDishType(view.selectedDishType);
 		//alert("listlängd i onchange: "+view.thumbnailList.length);
 		
@@ -12,6 +12,12 @@ var selectDishController = function(view, model) {
 		//alert("andra setThumbnailListener");
 		
 	});
+	
+	view.searchButton.click(function(){
+		var searchedFor = view.searchText.val();
+		alert(model.getAllDishes("starter", searchedFor).length);
+	});
+	
 	
 	function setThumbnailListener(){
 		for (i=0; i<view.thumbnailList.length; i++){
