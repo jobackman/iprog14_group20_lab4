@@ -1,5 +1,5 @@
 //ExampleView Object constructor
-var leftMenuView = function(row,model) {
+var leftMenuView = function(row,model,dish) {
 	
 
 //Creating the components dynamically. Here we create the following HTML content:	
@@ -25,7 +25,7 @@ var leftMenuView = function(row,model) {
 		dishtable.addClass("table"); 
 		var table = $("<table>"); 
 			table.addClass("table");
-			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr id="pending"></tr><tr><td><strong>Total:</strong></td><td id="totalMenuPrice">'+model.getTotalMenuPrice()+' kr</td></tr>');
+			table.html('<tr><th>Dish name</th><th>Cost</th></tr><tr></tr><tr id="pending"></tr><tr id="totalPriceRow"><td><strong>Total:</strong></td><td id="totalMenuPrice"></td></tr>');
 		leftMenu.append(table);		
 
 	leftMenu.append(hr);	//En till divider, använd förra igen
@@ -70,7 +70,7 @@ var leftMenuView = function(row,model) {
 	
 		//This function gets called when there is a change at the model
 	this.update = function(arg){
-		this.spanNumberofGuests.html(model.getNumberOfGuests()); 
+		//this.spanNumberofGuests.html(model.getNumberOfGuests()); 
 		this.totalMenuPrice.html(model.getTotalMenuPrice());
 	}
 }

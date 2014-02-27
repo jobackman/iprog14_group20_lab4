@@ -13,7 +13,7 @@ var lastPage = function (container,model) {
 
 			var md10 = $("<div>");
 				md10.addClass('col-md-10');	
-				md10.html('<h3> My Dinner: 4 people</h3>'); // INSERT FROM MODEL LATER
+				md10.html('<h3> My Dinner: '+model.getNumberOfGuests()+'</h3>'); // INSERT FROM MODEL LATER
 			
 
 			var md2btn = $("<div>");
@@ -27,34 +27,45 @@ var lastPage = function (container,model) {
 	overview.append(row);	
 	container.append(overview);
 
-	var row1 = $("<div>");
+
+
+			var menu = model.getFullMenu();
+			
+			for(i=0; i<menu.length; i++){
+				var row1 = $("<div>");
 		row1.addClass("row");
 		row1.attr("id", "row1");
 
 		var lastPage = $("<div>");
 			lastPage.addClass("col-md-12");
 			lastPage.attr("id", "lastPage");
-			// MAKE DYNAMIC LATER
-			lastPage.html('<div class="col-md-2" id="lastPageImage"><div class="thumbnail"><img src="images/icecream.jpg"></div></div>');
-
-	row1.append(lastPage);
+				lastPage.append('<div class="col-md-2" id="lastPageImage"><div class="thumbnail"><img src="images/'+menu[i].image+'"></div></div>');
+			
+				row1.append(lastPage);
 	
 
-	var dishNameAndText = $("<div>");
-		dishNameAndText.addClass("col-md-4");
-		dishNameAndText.attr("id", "dishNameAndText");
-		dishNameAndText.html('<h2>Ice Cream</h2><p> Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet, när en okänd boksättare tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok. Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk typografi utan större förändringar. Det blev allmänt känt på 1960-talet i samband med lanseringen av Letraset-ark med avsnitt av Lorem Ipsum, och senare med mjukvaror som Aldus PageMaker.</p>');
+				var dishNameAndText = $("<div>");
+					dishNameAndText.addClass("col-md-4");
+					dishNameAndText.attr("id", "dishNameAndText");
+					dishNameAndText.html('<h2>'+menu[i].name+'</h2><p>'+menu[i].description+'</p>');
+			
+			
+				lastPage.append(dishNameAndText);
 
-	lastPage.append(dishNameAndText);
+				var preparation = $("<div>");
+					preparation.addClass("col-md-6");
+					preparation.attr("id", "preparation");
+					preparation.html('<h2>Preparations</h2><p>'+menu[i].description+'</p>');
 
-	var preparation = $("<div>");
-		preparation.addClass("col-md-6");
-		preparation.attr("id", "preparation");
-		preparation.html('<h2>Preparations</h2><p> Lorem Ipsum är en utfyllnadstext från tryck- och förlagsindustrin. Lorem ipsum har varit standard ända sedan 1500-talet, när en okänd boksättare tog att antal bokstäver och blandade dem för att göra ett provexemplar av en bok. Lorem ipsum har inte bara överlevt fem århundraden, utan även övergången till elektronisk typografi utan större förändringar. Det blev allmänt känt på 1960-talet i samband med lanseringen av Letraset-ark med avsnitt av Lorem Ipsum, och senare med mjukvaror som Aldus PageMaker.</p>');
+					lastPage.append(preparation);
 
-	lastPage.append(preparation);
+					container.append(row1);
+			}
+			
 
-	container.append(row1);
+
+
+
 
 	this.overviewBtn = container.find("#overviewBtn");
 

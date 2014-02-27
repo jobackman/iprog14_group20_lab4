@@ -1,5 +1,5 @@
 //ExampleView Object constructor
-var overviewView = function (container,model) {
+var overviewView = function (container,model, dish) {
 
 	//Creating the components dynamically. Here we create the following HTML content:
 
@@ -13,7 +13,7 @@ var overviewView = function (container,model) {
 
 			var md10 = $("<div>");
 				md10.addClass('col-md-10');	
-				md10.html('<h3> My Dinner: 4 people</h3>'); // INSERT FROM MODEL LATER
+				md10.html('<h3> My Dinner: ' +model.getNumberOfGuests()+ ' people</h3>'); // INSERT FROM MODEL LATER
 			
 
 			var md2btn = $("<div>");
@@ -33,8 +33,20 @@ var overviewView = function (container,model) {
 		var overviewDishes = $("<div>");
 			overviewDishes.addClass("col-md-10");
 			overviewDishes.attr("id", "overViewDishes");
-			// MAKE DYNAMIC LATER
-			overviewDishes.html('<div class="col-md-2"><div class="thumbnail"><a href="#"><img src="images/icecream.jpg"></a><h3>Ice cream</h3><p class="price">77 SEK</p>	</div></div><div class="col-md-2"><div class="thumbnail"><a href="#"><img src="images/icecream.jpg"></a><h3>Ice cream</h3><p class="price">77 SEK</p>	</div></div>');
+			
+			
+			var menu = model.getFullMenu();
+			var guests = model.getNumberOfGuests();
+			
+			
+			for(var i=0; i<menu.length; i++){
+				var price = 0;
+				for(j=0; j<menu[i].ingredients.length; j++){
+					price += menu[i].ingredients[j].price;
+				}						
+				overviewDishes.append('<div class="col-md-2"><div class="thumbnail"><img src="images/'+menu[i].image+'"><h3>'+menu[i].name+'</h3><p class="price">'+price*guests+'</p></div>');
+			
+			}			
 
 	row1.append(overviewDishes);
 
@@ -45,7 +57,7 @@ var overviewView = function (container,model) {
 		var totalPriceContent = $("<div>");
 			totalPriceContent.attr("id", "totalPriceContent");
 			//MAKE DYMANIC LATER
-			totalPriceContent.html('<p> Total: </p> <p class="price"> 341 SEK</p>');
+			totalPriceContent.html('<p> Total: </p> <p class="price">'+model.getTotalMenuPrice()+'</p>');
 		
 		totalPrice.append(totalPriceContent);
 	

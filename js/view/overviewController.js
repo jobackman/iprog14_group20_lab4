@@ -1,5 +1,5 @@
 //ExampleViewController Object constructor
-var overviewController = function(view, model ) {
+var overviewController = function(view, model) {
 	
 	view.overviewBtn.click(function(){
 		$("#overview").fadeOut(400, function() { 
