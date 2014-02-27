@@ -49,35 +49,43 @@ var selectDishView = function (row,model) {
 	this.thumbnailList = [];
 	
 	
-	function updateDishes(test){
-		var list = model.getAllDishes(test);
-		this.thumbnailList = [];
-		for(i=0; i<list.length; i++){
-			var md2 = $("<div>");
-					md2.addClass("col-md-2");
-					var thumbnail = $('<div>');
-						thumbnail.attr("id", +list[i].id);
-						thumbnail.addClass("thumbnail");
-						thumbnail.html('<img src="images/'+list[i].image+'"><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
-						md2.append(thumbnail);
-					md10row.append(md2);
-				md10.append(md10row);		
-				
-				this.thumbnail = row.find("#"+list[i].id);
-				this.thumbnailList.push(this.thumbnail);
+	this.updateDishes = function updateDishes(test, filter){
+		var list = model.getAllDishes(test, filter);	//dinnerModel -> this.getAllDishes = function (type,filter) {
+		//alert("listlängd i updatedishes: "+list.length);
+		if(list.length==0){
+			row.append("<h2 id='emptyResult'>No results found</h2>");
 		}
-		row.append(md10);
+		else{
+			this.thumbnailList = [];
+			for(i=0; i<list.length; i++){
+				var md2 = $("<div>");
+						md2.addClass("col-md-2");
+						var thumbnail = $('<div>');
+							thumbnail.attr("id", +list[i].id);
+							thumbnail.addClass("thumbnail");
+							thumbnail.html('<img src="images/'+list[i].image+'"><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
+							md2.append(thumbnail);
+						md10row.append(md2);
+					md10.append(md10row);		
+					
+					this.thumbnail = row.find("#"+list[i].id);
+					this.thumbnailList.push(this.thumbnail);
+			}
+			row.append(md10);
+		}
 		return this.thumbnailList;
 	}
 
 		
 	
-	this.thumbnailList=updateDishes(model.getSelectedDishType());
+	this.thumbnailList=this.updateDishes(model.getSelectedDishType(), "");
 	
 	//get the selected dishtype from the scroll list
 	this.select = document.getElementById('selectList');
 	this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 	
+	//test
+	//this.thumbnailList=this.updateDishes(this.selectedDishType, "French toast");
 	
 	//Register an observer to the model
 	model.addObserver(this);
@@ -87,6 +95,6 @@ var selectDishView = function (row,model) {
 	this.update = function(arg){
 		$("#dishRow").empty();
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
-		updateDishes(this.selectedDishType);
+		this.updateDishes(this.selectedDishType);
 	}
 }

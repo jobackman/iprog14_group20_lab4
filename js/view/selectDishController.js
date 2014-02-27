@@ -1,29 +1,43 @@
 //ExampleViewController Object constructor
 var selectDishController = function(view, model) {
 	//alert("listlängd i controllern: "+view.thumbnailList.length);
-	setThumbnailListener();
+	setThumbnailListener(view.thumbnailList);
 	//alert("första setThumbnailListener");
 	
 	view.selectList.change(function(){		
 		model.setSelectedDishType(view.selectedDishType);
 		//alert("listlängd i onchange: "+view.thumbnailList.length);
 		
-		setThumbnailListener();
+		
+		//view.updateDishes(model.getSelectedDishType);
+		
+		setThumbnailListener(view.thumbnailList);
 		//alert("andra setThumbnailListener");
 		
 	});
 	
 	view.searchButton.click(function(){
 		var searchedFor = view.searchText.val();
-		alert(model.getAllDishes("starter", searchedFor).length);
+		var searchedList = model.getAllDishes(view.selectedDishType, searchedFor); //lista med de rätterna man sökt efter
+		
+		//rensa view'n
+		$('.thumbnail').empty().remove();
+		$('#dishRow').empty();
+		$('#dishes').empty();
+		$('#emptyResult').remove();
+		
+		//uppdatera med vald dishType samt det man sökt efter
+		view.updateDishes(view.selectedDishType, searchedFor);
+
+		setThumbnailListener(view.thumbnailList);
 	});
 	
-	
-	function setThumbnailListener(){
-		for (i=0; i<view.thumbnailList.length; i++){
+	//Kanske kör setThumbnailListener(lista)..?
+	function setThumbnailListener(lista){
+		for (i=0; i<lista.length; i++){
 			//alert("listlängd i forloop: "+view.thumbnailList.length);
 			//alert("inne i forloopen i onchange");
-			view.thumbnailList[i].click(function(){
+			lista[i].click(function(){
 				$("#selectDishView").fadeOut(400, function() { 
 					$('#selectDishView').remove(); 		
 				});
@@ -32,17 +46,7 @@ var selectDishController = function(view, model) {
 					$('#dishes').remove();
 					//Pending priset i LEFT MENU, Priset ska hämtas från Vald dish, INTE TotalMenuPrice
 					$("#pending").html('<td>Pending:</td><td>'+model.getTotalMenuPrice()+'</td>');
-					//$('#dishRow').remove();
-					if ($("#dishes").length){
-						alert("Dishes FINNS");
-					}
-					else { 
-					alert("Dishes finns INTE");}
-					if ($("#dishRow").length){
-						alert("DishROW FINNS");
-					}
-					else { 
-					alert("Dishrow finns INTE");}
+
 					
 					var chosenDish = new chosenDishView($("#secondDiv"), model);
 					var chosenDishC = new chosenDishController(chosenDish, model);
