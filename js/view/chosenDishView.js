@@ -18,7 +18,7 @@ var chosenDishView = function (row,model, dish) {
 			///////////																		 //////////
 			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
 
-			md6.html('<h2>' + dish.name + '</h2>' + '<img src="images/'+model.getDish(1).image+'">' + '<p>'+model.getDish(1).description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
+			md6.html('<h2>' + dish.name + '</h2>' + '<img src="images/'+dish.image+'">' + '<p>'+dish.description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
 			
 			chosenDish.append(md6);
 
@@ -29,8 +29,8 @@ var chosenDishView = function (row,model, dish) {
 			var loopedIngredients = "";
 			var i=0;
 			
-			while (i<model.getDish(1).ingredients.length){
-				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+model.getDish(1).ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+model.getDish(1).ingredients[i].quantity+'</td>' + '<td>'+'unit: '+model.getDish(1).ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+model.getDish(1).ingredients[i].price +'</td>' + '</tr>';
+			while (i<dish.ingredients.length){
+				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+dish.ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+model.getDish(1).ingredients[i].quantity+'</td>' + '<td>'+'unit: '+model.getDish(1).ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+model.getDish(1).ingredients[i].price +'</td>' + '</tr>';
 				i++;
 			}
 
@@ -55,7 +55,6 @@ var chosenDishView = function (row,model, dish) {
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
-		var id = arg;
 
 		//console.log("TEST "+this.numberOfGuests.html(model.getNumberOfGuests()));
 	}
