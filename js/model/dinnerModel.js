@@ -34,6 +34,8 @@ var DinnerModel = function() {
 	}
 
 	this.getSelectedDishType = function() {
+		
+		//alert("EXPLODE :" + selectedDishType);
 		return selectedDishType;
 	}
 
@@ -75,6 +77,7 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		menu[this.getDish(id).type] = id; 
+		notifyObservers();
 	}
 
 	//Removes dish from menu
@@ -106,9 +109,7 @@ var DinnerModel = function() {
 			
 		}
 	  	return dish.type == type && found;
-	  	//notifyObservers();
 	  });
-	  //notifyObservers();
 	}
 
 	//function that returns a dish of specific ID
@@ -312,7 +313,7 @@ var DinnerModel = function() {
 			'price':4
 			}]
 		},{
-		'id':102,
+		'id':103,
 		'name':'MD 4',
 		'type':'main dish',
 		'image':'meatballs.jpg',
@@ -377,10 +378,21 @@ var DinnerModel = function() {
 	*****************************************/
 
 	var observers = [];
+	
+	// this.returnObservers = function()
+	// {
+	// 	return observers;
+	// }
 
 	this.addObserver = function(observer) 
 	{
 		observers.push(observer);
+	}
+
+	this.removeObserver = function(){
+		//alert("Ska prova att ta bort observer i listan nu. Observerlängd= " + observers.length);
+		observers.splice(1, 1);
+		//alert("Har provat att ta bort observer i listan nu. Observerlängd= " + observers.length);
 	}
 
 	var notifyObservers = function(arg) 
@@ -388,6 +400,7 @@ var DinnerModel = function() {
 		for(var i=0; i<observers.length; i++) 
 		{
 			observers[i].update(arg);
+			//alert("notifyObservers observerlistlängd: " + observers.length);
 		}	
 	}
 }

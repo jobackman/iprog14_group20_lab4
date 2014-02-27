@@ -3,8 +3,11 @@ var selectDishController = function(view, model) {
 	
 
 	//Om man väljer en rätt i drop-downmenyn:
-	view.selectList.change(function(){		
+	view.selectList.change(function(){
+		//alert("har gått in i change");
 		model.setSelectedDishType(view.selectedDishType);
+		//$('#dishes').remove();		
+
 		
 	});
 	

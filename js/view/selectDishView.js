@@ -1,7 +1,6 @@
 //ExampleView Object constructor
 var selectDishView = function (row,model) {
 	
-	
 //Creating the components dynamically. Here we create the following HTML content:
 
 	//div we just store in temporary variable because we won't need it later
@@ -46,17 +45,18 @@ var selectDishView = function (row,model) {
 
 
 	//list to be able to set onclick's on the dishes in the controller	
-	this.thumbnailList = [];
+	//this.thumbnailList = [];
 	
 	
 	this.updateDishes = function updateDishes(test, filter){
+		var first = false;
 		var list = model.getAllDishes(test, filter);	//dinnerModel -> this.getAllDishes = function (type,filter) {
 		//alert("listlängd i updatedishes: "+list.length);
 		if(list.length==0){
 			row.append("<h2 id='emptyResult'>No results found</h2>");
 		}
 		else{
-			this.thumbnailList = [];
+			//this.thumbnailList = [];
 			for(i=0; i<list.length; i++){
 				var md2 = $("<div>");
 						md2.addClass("col-md-2");
@@ -74,28 +74,46 @@ var selectDishView = function (row,model) {
 			}
 			row.append(md10);
 		}
-		return this.thumbnailList;
+		//return this.thumbnailList;
 	}
 
-		
-	
-	this.thumbnailList=this.updateDishes(model.getSelectedDishType(), "");
+
+	this.updateDishes(model.getSelectedDishType(), "");
 	
 	//get the selected dishtype from the scroll list
 	this.select = document.getElementById('selectList');
-	this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
-	
+	//this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
+	this.selectedDishType = model.getSelectedDishType();
 	//test
 	//this.thumbnailList=this.updateDishes(this.selectedDishType, "French toast");
-	
+	//if(model.observers.length ==1){
 	//Register an observer to the model
 	model.addObserver(this);
+	//alert("nu har vi lagt till en ny observer till selectedDishView");
+	//}
+
+	//else {
+	//	alert("model.observer.length är inte 1");
+	//}
 	
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
+		//alert("hej");
 		$("#dishRow").empty();
+
+		// $('#dishes').empty();
+		// 		if ($("#dishRow").length==0){
+		// 			alert ("SELCETDISHVIEW (update) dishRow finns inte");
+		// 		}
+		// 		else {
+		// 			alert ("SELCETDISHVIEW (update) dishRow finns GAAAHH");
+		// 			$('#dishes').empty();
+		// 		}
+
+		//this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 		this.updateDishes(this.selectedDishType);
+
 	}
 }
