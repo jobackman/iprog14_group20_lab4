@@ -1,12 +1,9 @@
 var ThumbnailController = function(view, model, dish ) {
 
 	view.click(function(){
-<<<<<<< HEAD
 		//alert("är inne i ThumbnailController, dishen är: "+ dish.name);	
 		model.setSelectedDishType("starter");
-=======
 		//alert("skriver ut id för elementet som är först i listan: "+ dish.name);	
->>>>>>> 366840e69a7e4f234b476194914bcad9b7f767da
 		$("#selectDishView").fadeOut(400, function() { 
 			$('#selectDishView').remove(); 	
 			// if ($("#selectDishView").length==0){
