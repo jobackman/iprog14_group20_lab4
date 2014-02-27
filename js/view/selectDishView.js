@@ -111,7 +111,6 @@ var selectDishView = function (row,model) {
 		// 			$('#dishes').empty();
 		// 		}
 
-		//this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 		this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 		this.updateDishes(this.selectedDishType);
 

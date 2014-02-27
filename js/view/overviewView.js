@@ -13,7 +13,7 @@ var overviewView = function (container,model, dish) {
 
 			var md10 = $("<div>");
 				md10.addClass('col-md-10');	
-				md10.html('<h3> My Dinner: ' +model.getNumberOfGuests()+ ' people</h3>'); // INSERT FROM MODEL LATER
+				md10.html('<h3> My Dinner: ' +model.getNumberOfGuests()+ ' guests</h3>'); // INSERT FROM MODEL LATER
 			
 
 			var md2btn = $("<div>");

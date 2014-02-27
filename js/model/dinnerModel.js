@@ -5,7 +5,7 @@ var DinnerModel = function() {
 	var currentId = "";
 	var numberOfGuests=0; //set default number of guests
 	var selectedDishType="starter";
-	menu['starter'] = 1; //set a starter to the menu, to use for testing, starter=1 -> French toast
+	//menu['starter'] = 1; //set a starter to the menu, to use for testing, starter=1 -> French toast
 
 	
 	this.setCurrentId = function(id){

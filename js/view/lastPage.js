@@ -13,7 +13,7 @@ var lastPage = function (container,model) {
 
 			var md10 = $("<div>");
 				md10.addClass('col-md-10');	
-				md10.html('<h3> My Dinner: '+model.getNumberOfGuests()+'</h3>'); // INSERT FROM MODEL LATER
+				md10.html('<h3> My Dinner: '+model.getNumberOfGuests()+' guests</h3>'); // INSERT FROM MODEL LATER
 			
 
 			var md2btn = $("<div>");
@@ -33,13 +33,13 @@ var lastPage = function (container,model) {
 			
 			for(i=0; i<menu.length; i++){
 				var row1 = $("<div>");
-		row1.addClass("row");
-		row1.attr("id", "row1");
+					row1.addClass("row");
+					row1.attr("id", "row1");
 
-		var lastPage = $("<div>");
-			lastPage.addClass("col-md-12");
-			lastPage.attr("id", "lastPage");
-				lastPage.append('<div class="col-md-2" id="lastPageImage"><div class="thumbnail"><img src="images/'+menu[i].image+'"></div></div>');
+				var lastPage = $("<div>");
+					lastPage.addClass("col-md-12");
+					lastPage.attr("id", "lastPage");
+					lastPage.append('<div class="col-md-2" id="lastPageImage"><div class="thumbnail"><img src="images/'+menu[i].image+'"></div></div>');
 			
 				row1.append(lastPage);
 	
@@ -59,7 +59,7 @@ var lastPage = function (container,model) {
 
 					lastPage.append(preparation);
 
-					container.append(row1);
+					overview.append(row1);
 			}
 			
 
