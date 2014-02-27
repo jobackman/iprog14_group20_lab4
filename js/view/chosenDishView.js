@@ -30,7 +30,7 @@ var chosenDishView = function (row,model, dish) {
 			var i=0;
 			
 			while (i<dish.ingredients.length){
-				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+dish.ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+model.getDish(1).ingredients[i].quantity+'</td>' + '<td>'+'unit: '+model.getDish(1).ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+model.getDish(1).ingredients[i].price +'</td>' + '</tr>';
+				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+dish.ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+dish.ingredients[i].quantity+'</td>' + '<td>'+'unit: '+dish.ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+dish.ingredients[i].price +'</td>' + '</tr>';
 				i++;
 			}
 
