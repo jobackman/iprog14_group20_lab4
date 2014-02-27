@@ -27,18 +27,27 @@ var chosenDishView = function (row,model, dish) {
 			md6Ingredient.attr('id', 'ingredients');
 			
 			var loopedIngredients = "";
-			var i=0;
+			var totalPrice=0;
 			
-			while (i<dish.ingredients.length){
-				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+dish.ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+dish.ingredients[i].quantity+'</td>' + '<td>'+'unit: '+dish.ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+dish.ingredients[i].price +'</td>' + '</tr>';
-				i++;
+			for (i=0; i<dish.ingredients.length; i++){
+				var quantityAndUnit = dish.ingredients[i].quantity + " " + dish.ingredients[i].unit;
+				var ingredient = dish.ingredients[i].name;
+				var price = dish.ingredients[i].price * model.getNumberOfGuests();
+				totalPrice += price;
+			
+				loopedIngredients = loopedIngredients + '<tr><td>'+quantityAndUnit+'</td><td>'+ingredient+'</td><td>SEK</td><td class="ingredientValue">'+price+'</td></tr>';
 			}
 
-			md6Ingredient.html('<h3>Ingredients for: ' + model.getNumberOfGuests() + ' people' + '</h3>'+ loopedIngredients + '<table class="table"><tr><td><button type="submit" class="btn btn-default" id="confirmDish">Confirm Dish</button></td></tr>');
+
+
+			md6Ingredient.html('<h3>Ingredients for: ' + model.getNumberOfGuests() + ' people' + '</h3><table class="table">'+ loopedIngredients +'<tr><td colspan="2"><button type="submit" class="btn btn-default" id="confirmDish">Confirm Dish</button></td><td><strong>Total: </strong></td><td>'+totalPrice+'</td></tr>');
 			
-			chosenDish.append(md6Ingredient);
+		
+			chosenDish.append(md6Ingredient);			
 	row.append(chosenDish);
-	
+
+	$("#pending").html('<td>Pending:</td><td>'+totalPrice+'</td>');
+	//$("#totalMenuPrice").html(totalMenuPrice+totalPrice);
 	this.goBack = row.find("#goBack");
 	this.confirmDish = row.find("#confirmDish");
 
