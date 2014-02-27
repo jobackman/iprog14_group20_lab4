@@ -10,16 +10,32 @@ var chosenDishView = function (row,model) {
 		chosenDish.attr('id', 'dish');
 		var md6 = $("<div>");
 			md6.addClass('col-md-6');
-			//MAKE DYNAMIC LATER
-			md6.html('<h2>Ice cream</h2><img src="images/icecream.jpg"><p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p><button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
+
+			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
+			///////////																		 //////////
+			/////////// CHANGE THE NUMBER 1 (ONE) BELOW TO THE ID SENT FROM selectedDishView //////////
+			///////////																		 //////////
+			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
+
+			md6.html('<h2>' + model.getDish(1).name + '</h2>' + '<img src="images/'+model.getDish(1).image+'">' + '<p>'+model.getDish(1).description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
+			
 			chosenDish.append(md6);
 
 		var md6Ingredient = $("<div>");
 			md6Ingredient.addClass("col-md-6");
 			md6Ingredient.attr('id', 'ingredients');
-			md6Ingredient.html('<h3>Ingredients for 4 people</h3><table class="table"><tr><td>2tbsp</td><td>olive oil</td><td>SEK</td><td>0.20</td></tr><tr><td><button type="submit" class="btn btn-default" id="confirmDish">Confirm Dish</button></td><td><strong>Total: </strong></td><td>SEK</td><td>77.20</td></tr></table>');
-			chosenDish.append(md6Ingredient);
+			
+			var loopedIngredients = "";
+			var i=0;
+			
+			while (i<model.getDish(1).ingredients.length){
+				loopedIngredients = loopedIngredients + '<table class="table"><tr><td>'+model.getDish(1).ingredients[i].name+'</td>' +'<td>'+ 'quantity: '+model.getDish(1).ingredients[i].quantity+'</td>' + '<td>'+'unit: '+model.getDish(1).ingredients[i].unit+'</td>' +'<td>'+ 'SEK '+model.getDish(1).ingredients[i].price +'</td>' + '</tr>';
+				i++;
+			}
 
+			md6Ingredient.html('<h3>Ingredients for: ' + model.getNumberOfGuests() + ' people' + '</h3>'+ loopedIngredients + '<table class="table"><tr><td><button type="submit" class="btn btn-default" id="confirmDish">Confirm Dish</button></td></tr>');
+			
+			chosenDish.append(md6Ingredient);
 	row.append(chosenDish);
 	
 	this.goBack = row.find("#goBack");
