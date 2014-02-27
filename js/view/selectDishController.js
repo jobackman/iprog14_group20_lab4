@@ -3,7 +3,9 @@ var selectDishController = function(view, model) {
 	//alert("listlängd i controllern: "+view.thumbnailList.length);
 	setThumbnailListener(view.thumbnailList);
 	//alert("första setThumbnailListener");
-	
+
+
+
 	view.selectList.change(function(){		
 		model.setSelectedDishType(view.selectedDishType);
 		//alert("listlängd i onchange: "+view.thumbnailList.length);
@@ -35,22 +37,24 @@ var selectDishController = function(view, model) {
 	//Kanske kör setThumbnailListener(lista)..?
 	function setThumbnailListener(lista){
 		for (i=0; i<lista.length; i++){
-			//alert("listlängd i forloop: "+view.thumbnailList.length);
+			
 			//alert("inne i forloopen i onchange");
 			lista[i].click(function(){
-				$("#selectDishView").fadeOut(400, function() { 
-					$('#selectDishView').remove(); 		
-				});
-	
-				$("#dishes").fadeOut(400, function() { 
-					$('#dishes').remove();
-					//Pending priset i LEFT MENU, Priset ska hämtas från Vald dish, INTE TotalMenuPrice
-					$("#pending").html('<td>Pending:</td><td>'+model.getTotalMenuPrice()+'</td>');
+				// alert("skriver ut id för elementet som är först i listan: "+$(this).attr("id"));	
+				// $("#selectDishView").fadeOut(400, function() { 
+				// 	$('#selectDishView').remove(); 	
 
+				// });
+	
+				// $("#dishes").fadeOut(400, function() { 
+				// 	$('#dishes').remove();
+				// 	//Pending priset i LEFT MENU, Priset ska hämtas från Vald dish, INTE TotalMenuPrice
+				// 	$("#pending").html('<td>Pending:</td><td>'+model.getTotalMenuPrice()+'</td>');
+				// 	var chosenDish = new chosenDishView($("#secondDiv"), model);
+				// 	var chosenDishC = new chosenDishController(chosenDish, model);
+				// 	//chosenDish.update();
 					
-					var chosenDish = new chosenDishView($("#secondDiv"), model);
-					var chosenDishC = new chosenDishController(chosenDish, model);
-				}); 
+				// }); 
 			});
 		}
 	}

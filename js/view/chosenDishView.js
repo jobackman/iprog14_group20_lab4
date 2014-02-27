@@ -1,9 +1,10 @@
 //ExampleView Object constructor
-var chosenDishView = function (row,model) {
+var chosenDishView = function (row,model, dish) {
 	
 	
 //Creating the components dynamically. Here we create the following HTML content:
 
+	this.dish = dish;
 	//div we just store in temporary variable because we won't need it later
 	var chosenDish = $("<div>");
 		chosenDish.addClass("col-md-10");
@@ -17,7 +18,7 @@ var chosenDishView = function (row,model) {
 			///////////																		 //////////
 			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
 
-			md6.html('<h2>' + model.getDish(1).name + '</h2>' + '<img src="images/'+model.getDish(1).image+'">' + '<p>'+model.getDish(1).description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
+			md6.html('<h2>' + dish.name + '</h2>' + '<img src="images/'+model.getDish(1).image+'">' + '<p>'+model.getDish(1).description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
 			
 			chosenDish.append(md6);
 
@@ -54,6 +55,8 @@ var chosenDishView = function (row,model) {
 	
 	//This function gets called when there is a change at the model
 	this.update = function(arg){
+		var id = arg;
+
 		//console.log("TEST "+this.numberOfGuests.html(model.getNumberOfGuests()));
 	}
 }

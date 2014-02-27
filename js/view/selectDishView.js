@@ -69,7 +69,8 @@ var selectDishView = function (row,model) {
 					md10.append(md10row);		
 					
 					this.thumbnail = row.find("#"+list[i].id);
-					this.thumbnailList.push(this.thumbnail);
+					new ThumbnailController(this.thumbnail,model,list[i]);
+					// this.thumbnailList.push(this.thumbnail);
 			}
 			row.append(md10);
 		}
