@@ -12,12 +12,7 @@ var chosenDishView = function (row,model, dish) {
 		var md6 = $("<div>");
 			md6.addClass('col-md-6');
 
-			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
-			///////////																		 //////////
-			/////////// CHANGE THE NUMBER 1 (ONE) BELOW TO THE ID SENT FROM selectedDishView //////////
-			///////////																		 //////////
-			/////////// /////////// /////////// /////////// /////////// /////////// ///////////////////
-
+			
 			md6.html('<h2>' + dish.name + '</h2>' + '<img src="images/'+dish.image+'">' + '<p>'+dish.description + '</p>'+'<button type="submit" class="btn btn-default" id="goBack">Back to Select Dish</button>');
 			
 			chosenDish.append(md6);

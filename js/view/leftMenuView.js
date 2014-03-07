@@ -56,6 +56,7 @@ var leftMenuView = function(row,model,dish) {
 
 	this.spanNumberofGuests = row.find("#updateNumberofGuests");
 	this.inputNumberOfGuests = row.find("#inputNumberOfGuests");
+	this.pending = row.find("#pending");
 	this.totalMenuPrice = row.find("#totalMenuPrice");
 
 	this.confirmDinnerButton = row.find("#confirmDinnerButton");
@@ -71,6 +72,7 @@ var leftMenuView = function(row,model,dish) {
 		//This function gets called when there is a change at the model
 	this.update = function(arg){
 		//this.spanNumberofGuests.html(model.getNumberOfGuests()); 
+		//this.pending.html(model.getTotalMenuPrice());
 		this.totalMenuPrice.html(model.getTotalMenuPrice());
 	}
 }

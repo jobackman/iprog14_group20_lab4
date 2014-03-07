@@ -53,42 +53,52 @@ var selectDishView = function (row,model) {
 		var list = model.getAllDishes(test, filter);	//dinnerModel -> this.getAllDishes = function (type,filter) {
 		//alert("listlängd i updatedishes: "+list.length);
 		if(list.length==0){
+			alert("inga resultat...");
 			row.append("<h2 id='emptyResult'>No results found</h2>");
 		}
 		else{
+
 			//this.thumbnailList = [];
 			for(i=0; i<list.length; i++){
+				//alert("listans längd är: "+list.length +" namnet är: " + list[i].name);
+				//alert("borde visa dishes efter man klickat ok här, inne i for-loopen...");
 				var md2 = $("<div>");
 						md2.addClass("col-md-2");
 						var thumbnail = $('<div>');
 							thumbnail.attr("id", +list[i].id);
 							thumbnail.addClass("thumbnail");
-							thumbnail.html('<img src="images/'+list[i].image+'"><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');
-							md2.append(thumbnail);
+							thumbnail.html('<img src="images/'+list[i].image+'"><strong>'+list[i].name+'</strong><p>"'+list[i].description+'</p>');							md2.append(thumbnail);
 						md10row.append(md2);
-					md10.append(md10row);		
+					md10.append(md10row);	
 					
 					this.thumbnail = row.find("#"+list[i].id);
+					//alert("innan ThumbnailController...");
 					new ThumbnailController(this.thumbnail,model,list[i]);
-					// this.thumbnailList.push(this.thumbnail);
+					//alert("efter ThumbnailController...");
 			}
+			//alert("efter for-loopen....");
 			row.append(md10);
+			//alert("efter row.append(md10)");
 		}
 		//return this.thumbnailList;
 	}
 
-
+	//alert("innan updateDishes");
 	this.updateDishes(model.getSelectedDishType(), "");
-	
+	//alert("innan updateDishes");
+	//alert("rad 1");
 	//get the selected dishtype from the scroll list
 	this.select = document.getElementById('selectList');
+	//alert("rad 2");
 	//this.selectedDishType =	this.select.options[this.select.selectedIndex].value;
 	this.selectedDishType = model.getSelectedDishType();
+	//alert("rad 3");
 	//test
 	//this.thumbnailList=this.updateDishes(this.selectedDishType, "French toast");
 	//if(model.observers.length ==1){
 	//Register an observer to the model
 	model.addObserver(this);
+	//alert("rad 4");
 	//alert("nu har vi lagt till en ny observer till selectedDishView");
 	//}
 

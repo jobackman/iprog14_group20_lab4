@@ -7,7 +7,7 @@ var chosenDishController = function(view, model, dish) {
 			$('#dish').remove(); 
 			$('#dishes').remove();
 			
-			$('#pending').html('');
+			$('#pending').remove();
 			
 			model.removeObserver();
 			var selectDish = new selectDishView($("#secondDiv"), model);
@@ -22,7 +22,8 @@ var chosenDishController = function(view, model, dish) {
 		$("#dish").fadeOut(400, function() { 
 			$('#dish').remove(); 
 			$('#dishes').remove();
-			$('#pending').html('');
+			$("#pending").remove();
+			//$('#pending').html('');
 			$("<tr><td>"+dish.name+"</td><td class='totalDishPrice'>"+view.totalPrice+"</td></tr>").insertBefore("#totalPriceRow");
 			
 			//ska väl inte göras i controllern?

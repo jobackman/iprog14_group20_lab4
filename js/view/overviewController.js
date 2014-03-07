@@ -23,7 +23,8 @@ var overviewController = function(view, model) {
 					
 					var leftMenu = new leftMenuView($("#secondDiv"), model);
 					var leftControl = new leftMenuController(leftMenu, model);
-					
+					alert("Efter återskapandet av left menu...");
+					//$("#pending").html('<td>Pending:</td><td>'+this.totalPrice+'</td>');
 					var selectDish = new selectDishView(row, model);
 					var selectDishC = new selectDishController(selectDish, model);
 		});  

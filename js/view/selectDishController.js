@@ -15,7 +15,7 @@ var selectDishController = function(view, model) {
 	view.searchButton.click(function(){
 		var searchedFor = view.searchText.val();
 		var searchedList = model.getAllDishes(view.selectedDishType, searchedFor); //lista med de rätterna man sökt efter
-		
+		alert(searchedFor);
 		//rensa view'n
 		$('.thumbnail').empty().remove();
 		$('#dishRow').empty();
